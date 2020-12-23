@@ -1,23 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {useEffect} from 'react';
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(0);
-
   useEffect(() => {
-    fetch('/api').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
-  }, []);
-
+    fetch('/api').then(response => response.json().then(data => {
+      console.log(data);
+    }))
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-
-        ... no changes in this part ...
-
-        <p>The current time is {currentTime}.</p>
-      </header>
     </div>
   );
 }
